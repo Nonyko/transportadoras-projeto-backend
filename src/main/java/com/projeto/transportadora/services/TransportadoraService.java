@@ -72,6 +72,28 @@ public class TransportadoraService {
 	}
 	
 	/**
+	 * Serviço para retornar uma transportadora a partir de um id de transportadora.
+	 * 
+	 * @param criarTransportadoraDTO
+	 * @param idTransportadora
+	 * @return transportadora 
+	 */
+	public Transportadora buscarTransportadora(long idTransportadora) {
+		
+		Transportadora transportadoraRetornada = new Transportadora();
+		Optional<Transportadora> transportadora = this.transportadoraRepository.findById(idTransportadora);
+		if(transportadora.isPresent()) {
+			transportadoraRetornada = transportadora.get();
+		}else {
+		String msg = "Transportadora não encontrada para o id passado.";
+		throw new ResponseStatusException(
+			           HttpStatus.NOT_FOUND, msg, new NotFoundException(msg));
+		}	
+		
+		return transportadoraRetornada;
+	}
+	
+	/**
 	 * Serviço para deletar transportadora a partir de um id de transportadora.
 	 * 
 	 * @param idTransportadora
