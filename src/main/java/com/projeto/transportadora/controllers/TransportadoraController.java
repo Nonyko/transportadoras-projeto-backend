@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.projeto.transportadora.dto.CriarTransportadoraDTO;
@@ -108,9 +109,10 @@ public class TransportadoraController {
 	})
 	public ResponseEntity<List<TransportadoraDTO>> listarTransportadoras(
 			@ApiIgnore("Ignored because swagger ui shows the wrong params, instead they are explained in the implicit params")
-			Pageable pageable)
+			Pageable pageable,
+			@RequestParam(required=false) String nomeTransportadora)
 	{
-		Page<Transportadora> transportadoraPage = transportadoraService.listarTransportadoras(pageable);
+		Page<Transportadora> transportadoraPage = transportadoraService.listarTransportadoras(pageable, nomeTransportadora);
 		
 		//Coloca total de paginas no header
 		int totalPages = transportadoraPage.getTotalPages();

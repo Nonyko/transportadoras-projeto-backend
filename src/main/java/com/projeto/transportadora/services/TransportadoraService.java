@@ -116,14 +116,15 @@ public class TransportadoraService {
 	}
 	
 	/**
-	 * Serviço para listar transportadora a partir de um conjunto de filtros
+	 * Serviço para listar transportadora a partir de um conjunto de filtros(caso não queira colocar o filtro, mande null).
 	 * 
 	 * @param pageable
+	 * @param nomeTransportadora
 	 * @return transportadorasPage 
 	 */
-	public Page listarTransportadoras(Pageable pageable) {
+	public Page listarTransportadoras(Pageable pageable, String nomeTransportadora) {
 		//TODO listar transportadoras por filtro
-		Page transportadorasPage = this.transportadoraRepository.findAll(pageable);
+		Page transportadorasPage = this.transportadoraRepository.buscarTransportadoraPorFiltros(pageable, nomeTransportadora);
 		return transportadorasPage;
 	}
 }

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.projeto.transportadora.models.Transportadora;
 
 @Repository
-public interface TransportadoraRepository extends JpaRepository<Transportadora, Long> {
+public interface TransportadoraRepository extends JpaRepository<Transportadora, Long>, TransportadoraRepositoryCustom {
 
 	Page findAll(Pageable pageable);
 }
