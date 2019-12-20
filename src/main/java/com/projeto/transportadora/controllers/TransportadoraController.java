@@ -5,8 +5,10 @@ import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -47,9 +49,14 @@ public class TransportadoraController {
 		return new ResponseEntity<TransportadoraDTO>(transportadoraMapper.toDto(transportadoraCriada), HttpStatus.OK);
 	}
 	
-	
+	/* Endpoint para editar transportadora	
+	 * 
+	 * @param criarTransportadoraDTO
+	 * @param idTransportadora
+	 * @return  ResponseEntity<TransportadoraDTO>
+	 * */
 	@ApiOperation(value="Endpoint para editar transportadora", response = TransportadoraDTO.class)
-	@PostMapping("/editar/{idTransportadora}")
+	@PutMapping("/editar/{idTransportadora}")
 	public ResponseEntity<TransportadoraDTO> editarTransportadora(	@PathVariable long idTransportadora, 
 																	@RequestBody CriarTransportadoraDTO criarTransportadoraDTO){
 		Transportadora transportadoraEditada = transportadoraService.editarTransportadora(criarTransportadoraDTO, idTransportadora);
@@ -57,6 +64,16 @@ public class TransportadoraController {
 	}
 	
 	//TODO endpoint para deletar transportadora
+	/* Endpoint para deletar transportadora	
+	 * 
+	 * @param idTransportadora
+	 * */
+	@ApiOperation(value="Endpoint para deletar transportadora", response = TransportadoraDTO.class)
+	@DeleteMapping("/deletar/{idTransportadora}")
+	public ResponseEntity<TransportadoraDTO> deletarTransportadora(	@PathVariable long idTransportadora){
+		Transportadora transportadoraDeletada = transportadoraService.deletarTransportadora(idTransportadora);
+		return new ResponseEntity<TransportadoraDTO>(transportadoraMapper.toDto(transportadoraDeletada), HttpStatus.OK);
+	}
 	
 	//TODO endpoint para listar transportadoras
 	
