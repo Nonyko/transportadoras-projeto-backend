@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.projeto.transportadora.dto.CriarTransportadoraDTO;
+import com.projeto.transportadora.enums.EstadoEnum;
 import com.projeto.transportadora.models.Transportadora;
 import com.projeto.transportadora.repositories.TransportadoraRepository;
 
@@ -36,7 +37,7 @@ public class TransportadoraService {
 		novaTransportadora.setNome(criarTransportadoraDTO.getNome());
 		novaTransportadora.setModal(criarTransportadoraDTO.getMunicipio());
 		novaTransportadora.setMunicipio(criarTransportadoraDTO.getMunicipio());
-		novaTransportadora.setUf(criarTransportadoraDTO.getUf());
+		novaTransportadora.setUf(EstadoEnum.fromSigla(criarTransportadoraDTO.getUf()));
 		
 		this.transportadoraRepository.save(novaTransportadora);
 		
@@ -59,7 +60,7 @@ public class TransportadoraService {
 			transportadoraEditada.setNome(criarTransportadoraDTO.getNome());
 			transportadoraEditada.setModal(criarTransportadoraDTO.getMunicipio());
 			transportadoraEditada.setMunicipio(criarTransportadoraDTO.getMunicipio());
-			transportadoraEditada.setUf(criarTransportadoraDTO.getUf());
+			transportadoraEditada.setUf(EstadoEnum.fromSigla(criarTransportadoraDTO.getUf()));
 			this.transportadoraRepository.save(transportadoraEditada);
 		}else {
 		String msg = "Transportadora não encontrada para o id passado.";
