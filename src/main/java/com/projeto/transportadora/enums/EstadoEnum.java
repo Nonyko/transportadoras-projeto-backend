@@ -61,11 +61,7 @@ public enum EstadoEnum {
 	  }
 	
 	@Override
-	public String toString() {
-		final StringBuilder sb = new StringBuilder("Estado{");
-		sb.append("nome='").append(nome).append('\'');
-		sb.append(", sigla='").append(sigla).append('\'');
-		sb.append('}');
-		return sb.toString();
+	public String toString() {		
+		return sigla;
 	  }
 }
