@@ -11,6 +11,14 @@ import lombok.Setter;
 @Setter
 public class CriarTransportadoraDTO {
 	private String nome;
+	private String email;
+	private String empresa;
+	private String telefone;
+	private String celular;
+	private String whatsapp;
+	private String bairro;
+	private String rua;
+	private String numero;	
 	private String municipio;
 	private String uf;
 	private List<ModalEnum> modal;

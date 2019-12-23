@@ -35,8 +35,19 @@ private static final long serialVersionUID = 1L;
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;	
 	
-	private String nome;
+	//TODO logo
+	
+	private String nome;//required
+	private String email;
+	private String empresa;
+	private String telefone;
+	private String celular;
+	private String whatsapp;
+	
 	private String municipio;	
+	private String bairro;
+	private String rua;
+	private String numero;	
 	@Enumerated(EnumType.STRING)
 	private EstadoEnum uf;
 	

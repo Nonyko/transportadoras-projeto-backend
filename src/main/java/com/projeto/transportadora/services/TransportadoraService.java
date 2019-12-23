@@ -37,9 +37,17 @@ public class TransportadoraService {
 		
 		Transportadora novaTransportadora = new Transportadora();
 		novaTransportadora.setNome(criarTransportadoraDTO.getNome());
+		novaTransportadora.setEmail(criarTransportadoraDTO.getEmail());
+		novaTransportadora.setEmpresa(criarTransportadoraDTO.getEmpresa());
+		novaTransportadora.setTelefone(criarTransportadoraDTO.getTelefone());
+		novaTransportadora.setCelular(criarTransportadoraDTO.getCelular());
+		novaTransportadora.setWhatsapp(criarTransportadoraDTO.getWhatsapp());
+		novaTransportadora.setBairro(criarTransportadoraDTO.getBairro());
+		novaTransportadora.setRua(criarTransportadoraDTO.getRua());
+		novaTransportadora.setNumero(criarTransportadoraDTO.getNumero());
 		novaTransportadora.setMunicipio(criarTransportadoraDTO.getMunicipio());
 		novaTransportadora.setUf(EstadoEnum.fromSigla(criarTransportadoraDTO.getUf()));		
-
+		
 		novaTransportadora.setModal(criarTransportadoraDTO.getModal());
 		
 		this.transportadoraRepository.save(novaTransportadora);
@@ -60,7 +68,15 @@ public class TransportadoraService {
 		Optional<Transportadora> transportadoraParaEditar = this.transportadoraRepository.findById(idTransportadora);
 		if(transportadoraParaEditar.isPresent()) {
 			transportadoraEditada = transportadoraParaEditar.get();
-			transportadoraEditada.setNome(criarTransportadoraDTO.getNome());			
+			transportadoraEditada.setNome(criarTransportadoraDTO.getNome());
+			transportadoraEditada.setEmail(criarTransportadoraDTO.getEmail());
+			transportadoraEditada.setEmpresa(criarTransportadoraDTO.getEmpresa());
+			transportadoraEditada.setTelefone(criarTransportadoraDTO.getTelefone());
+			transportadoraEditada.setCelular(criarTransportadoraDTO.getCelular());
+			transportadoraEditada.setWhatsapp(criarTransportadoraDTO.getWhatsapp());
+			transportadoraEditada.setBairro(criarTransportadoraDTO.getBairro());
+			transportadoraEditada.setRua(criarTransportadoraDTO.getRua());
+			transportadoraEditada.setNumero(criarTransportadoraDTO.getNumero());
 			transportadoraEditada.setMunicipio(criarTransportadoraDTO.getMunicipio());
 			transportadoraEditada.setUf(EstadoEnum.fromSigla(criarTransportadoraDTO.getUf()));
 			
