@@ -20,6 +20,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.projeto.transportadora.dto.CriarTransportadoraDTO;
 import com.projeto.transportadora.dto.TransportadoraDTO;
+import com.projeto.transportadora.enums.EstadoEnum;
+import com.projeto.transportadora.enums.ModalEnum;
 import com.projeto.transportadora.mappers.TransportadoraMapper;
 import com.projeto.transportadora.models.Transportadora;
 import com.projeto.transportadora.services.TransportadoraService;
@@ -110,9 +112,12 @@ public class TransportadoraController {
 	public ResponseEntity<List<TransportadoraDTO>> listarTransportadoras(
 			@ApiIgnore("Ignored because swagger ui shows the wrong params, instead they are explained in the implicit params")
 			Pageable pageable,
-			@RequestParam(required=false) String nomeTransportadora)
+			@RequestParam(required=false) String nomeTransportadora,
+			@RequestParam(required=false) List<EstadoEnum> ufList,
+			@RequestParam(required=false) List<String> municipioList,
+			@RequestParam(required=false) List<ModalEnum> tipoModal)
 	{
-		Page<Transportadora> transportadoraPage = transportadoraService.listarTransportadoras(pageable, nomeTransportadora);
+		Page<Transportadora> transportadoraPage = transportadoraService.listarTransportadoras(pageable, nomeTransportadora, ufList, municipioList, tipoModal);
 		
 		//Coloca total de paginas no header
 		int totalPages = transportadoraPage.getTotalPages();

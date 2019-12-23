@@ -1,6 +1,7 @@
 
 package com.projeto.transportadora.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.domain.Page;
@@ -11,6 +12,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.projeto.transportadora.dto.CriarTransportadoraDTO;
 import com.projeto.transportadora.enums.EstadoEnum;
+import com.projeto.transportadora.enums.ModalEnum;
 import com.projeto.transportadora.models.Transportadora;
 import com.projeto.transportadora.repositories.TransportadoraRepository;
 
@@ -35,7 +37,7 @@ public class TransportadoraService {
 		
 		Transportadora novaTransportadora = new Transportadora();
 		novaTransportadora.setNome(criarTransportadoraDTO.getNome());
-		novaTransportadora.setModal(criarTransportadoraDTO.getMunicipio());
+		novaTransportadora.setModal(ModalEnum.fromNome(criarTransportadoraDTO.getMunicipio()));
 		novaTransportadora.setMunicipio(criarTransportadoraDTO.getMunicipio());
 		novaTransportadora.setUf(EstadoEnum.fromSigla(criarTransportadoraDTO.getUf()));
 		
@@ -58,7 +60,7 @@ public class TransportadoraService {
 		if(transportadoraParaEditar.isPresent()) {
 			transportadoraEditada = transportadoraParaEditar.get();
 			transportadoraEditada.setNome(criarTransportadoraDTO.getNome());
-			transportadoraEditada.setModal(criarTransportadoraDTO.getMunicipio());
+			transportadoraEditada.setModal(ModalEnum.fromNome(criarTransportadoraDTO.getMunicipio()));
 			transportadoraEditada.setMunicipio(criarTransportadoraDTO.getMunicipio());
 			transportadoraEditada.setUf(EstadoEnum.fromSigla(criarTransportadoraDTO.getUf()));
 			this.transportadoraRepository.save(transportadoraEditada);
@@ -122,9 +124,9 @@ public class TransportadoraService {
 	 * @param nomeTransportadora
 	 * @return transportadorasPage 
 	 */
-	public Page listarTransportadoras(Pageable pageable, String nomeTransportadora) {
+	public Page listarTransportadoras(Pageable pageable, String nomeTransportadora, List<EstadoEnum> ufList, List<String> municipioList, List<ModalEnum> tipoModal) {
 		//TODO listar transportadoras por filtro
-		Page transportadorasPage = this.transportadoraRepository.buscarTransportadoraPorFiltros(pageable, nomeTransportadora);
+		Page transportadorasPage = this.transportadoraRepository.buscarTransportadoraPorFiltros(pageable, nomeTransportadora, ufList, municipioList, tipoModal);
 		return transportadorasPage;
 	}
 }

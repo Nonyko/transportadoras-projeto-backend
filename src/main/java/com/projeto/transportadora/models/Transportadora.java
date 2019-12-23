@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import com.projeto.transportadora.enums.EstadoEnum;
+import com.projeto.transportadora.enums.ModalEnum;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -35,5 +36,6 @@ private static final long serialVersionUID = 1L;
 	private String municipio;	
 	@Enumerated(EnumType.STRING)
 	private EstadoEnum uf;
-	private String modal;
+	@Enumerated(EnumType.STRING)
+	private ModalEnum modal;
 }
