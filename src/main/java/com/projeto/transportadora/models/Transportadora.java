@@ -12,6 +12,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 import com.projeto.transportadora.enums.EstadoEnum;
 import com.projeto.transportadora.enums.ModalEnum;
@@ -35,16 +38,14 @@ private static final long serialVersionUID = 1L;
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;	
 	
-	//TODO logo
-	
-	private String nome;//required
+	//TODO campo logo
+	private String nome;
 	private String email;
 	private String empresa;
 	private String telefone;
 	private String celular;
 	private String whatsapp;
-	
-	private String municipio;	
+	private String municipio;
 	private String bairro;
 	private String rua;
 	private String numero;	

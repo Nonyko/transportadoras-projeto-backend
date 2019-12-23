@@ -2,6 +2,8 @@ package com.projeto.transportadora.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
@@ -54,7 +56,7 @@ public class TransportadoraController {
 	 * */
 	@ApiOperation(value="Endpoint para criar transportadora", response = TransportadoraDTO.class)
 	@PostMapping("/criar")
-	public ResponseEntity<TransportadoraDTO> criarTransportadora(@RequestBody CriarTransportadoraDTO criarTransportadoraDTO){
+	public ResponseEntity<TransportadoraDTO> criarTransportadora(@Valid @RequestBody CriarTransportadoraDTO criarTransportadoraDTO){
 		Transportadora transportadoraCriada = transportadoraService.criarTransportadora(criarTransportadoraDTO);
 		return new ResponseEntity<TransportadoraDTO>(transportadoraMapper.toDto(transportadoraCriada), HttpStatus.OK);
 	}
@@ -68,7 +70,7 @@ public class TransportadoraController {
 	@ApiOperation(value="Endpoint para editar transportadora", response = TransportadoraDTO.class)
 	@PutMapping("/editar/{idTransportadora}")
 	public ResponseEntity<TransportadoraDTO> editarTransportadora(	@PathVariable long idTransportadora, 
-																	@RequestBody CriarTransportadoraDTO criarTransportadoraDTO){
+																	@Valid @RequestBody CriarTransportadoraDTO criarTransportadoraDTO){
 		Transportadora transportadoraEditada = transportadoraService.editarTransportadora(criarTransportadoraDTO, idTransportadora);
 		return new ResponseEntity<TransportadoraDTO>(transportadoraMapper.toDto(transportadoraEditada), HttpStatus.OK);
 	}
