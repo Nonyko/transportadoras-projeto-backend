@@ -26,6 +26,8 @@ import com.projeto.transportadora.enums.EstadoEnum;
 import com.projeto.transportadora.enums.ModalEnum;
 import com.projeto.transportadora.mappers.TransportadoraMapper;
 import com.projeto.transportadora.models.Transportadora;
+import com.projeto.transportadora.repositories.interfaces.MunicipioCount;
+import com.projeto.transportadora.repositories.interfaces.UfCount;
 import com.projeto.transportadora.services.TransportadoraService;
 
 import io.swagger.annotations.Api;
@@ -128,6 +130,29 @@ public class TransportadoraController {
 		Integer.toString(totalPages));
 		
 		return ResponseEntity.ok().headers(responseHeaders).body(transportadoraMapper.toDto(transportadoraPage.getContent()));
+	}
+	
+	
+	/* Endpoint para retornar UFs existentes, com suas contagens de quantas transportadoras estão cadastradas nelas.
+	 * 
+	 * @param 
+	 * */
+	@ApiOperation(value="Endpoint para retornar UFs existentes, com suas contagens de quantas transportadoras estão cadastradas nelas", response = UfCount[].class)
+	@GetMapping("/get-ufcount")
+	public ResponseEntity<List<UfCount>> retornarContagemUf(){
+		List<UfCount> ufCountList = transportadoraService.buscarUfsEContagemTransportadora();
+		return new ResponseEntity<List<UfCount>>(ufCountList, HttpStatus.OK);
+	}
+	
+	/* Endpoint para retornar Municipios existentes, com suas contagens de quantas transportadoras estão cadastradas neles.
+	 * 
+	 * @param 
+	 * */
+	@ApiOperation(value="Endpoint para retornar municipios existentes, com suas contagens de quantas transportadoras estão cadastradas neles", response = UfCount[].class)
+	@GetMapping("/get-municipiocount")
+	public ResponseEntity<List<MunicipioCount>> retornarContagemMunicipio(){
+		List<MunicipioCount> municipioCountList = transportadoraService.buscarMunicipiosEContagemTransportadora();
+		return new ResponseEntity<List<MunicipioCount>>(municipioCountList, HttpStatus.OK);
 	}
 	
 }

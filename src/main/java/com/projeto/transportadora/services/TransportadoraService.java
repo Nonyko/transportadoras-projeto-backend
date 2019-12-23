@@ -15,6 +15,8 @@ import com.projeto.transportadora.enums.EstadoEnum;
 import com.projeto.transportadora.enums.ModalEnum;
 import com.projeto.transportadora.models.Transportadora;
 import com.projeto.transportadora.repositories.TransportadoraRepository;
+import com.projeto.transportadora.repositories.interfaces.MunicipioCount;
+import com.projeto.transportadora.repositories.interfaces.UfCount;
 
 import javassist.NotFoundException;
 
@@ -148,4 +150,27 @@ public class TransportadoraService {
 		Page transportadorasPage = this.transportadoraRepository.buscarTransportadoraPorFiltros(pageable, nomeTransportadora, ufList, municipioList, tipoModal);
 		return transportadorasPage;
 	}
+	
+	/**
+	 * Serviço para listar UFs existentes, com suas contagens de quantas transportadoras estão cadastradas nelas.
+	 * 
+	 * @param 
+	 * @return  
+	 */
+	public List<UfCount> buscarUfsEContagemTransportadora() {
+		List<UfCount> ufCountList = this.transportadoraRepository.getUfSAndUfSCount();
+		return ufCountList;
+	}
+	
+	/**
+	 * Serviço para listar Municipios existentes, com suas contagens de quantas transportadoras estão cadastradas neles.
+	 * 
+	 * @param 
+	 * @return  
+	 */
+	public List<MunicipioCount> buscarMunicipiosEContagemTransportadora() {
+		List<MunicipioCount> municipioCountList = this.transportadoraRepository.getMunicipiosAndMunicipiosCount();
+		return municipioCountList;
+	}
+	
 }
