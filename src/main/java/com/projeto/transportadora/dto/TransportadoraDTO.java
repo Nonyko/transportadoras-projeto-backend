@@ -1,6 +1,9 @@
 package com.projeto.transportadora.dto;
 
+import java.util.List;
+
 import com.projeto.transportadora.enums.EstadoEnum;
+import com.projeto.transportadora.enums.ModalEnum;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -12,5 +15,5 @@ public class TransportadoraDTO {
 	private String nome;
 	private String municipio;
 	private EstadoEnum uf;
-	private String modal;
+	private List<ModalEnum> modal;
 }

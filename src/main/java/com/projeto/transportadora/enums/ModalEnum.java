@@ -6,7 +6,7 @@ import lombok.Getter;
 public enum ModalEnum {
 	RODOVIARIO("Rodoviário"),
 	AQUAVIARIO("Aquaviário"), 
-	AEREO("Aéreeo");
+	AEREO("Aéreo");
 	
 	private String nome;
 	
@@ -26,8 +26,4 @@ public enum ModalEnum {
 	
 	
 	
-	@Override
-	public String toString() {		
-		return nome;
-	  }
 }

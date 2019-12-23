@@ -1,7 +1,10 @@
 package com.projeto.transportadora.models;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CollectionTable;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -36,6 +39,9 @@ private static final long serialVersionUID = 1L;
 	private String municipio;	
 	@Enumerated(EnumType.STRING)
 	private EstadoEnum uf;
+	
+	@ElementCollection(targetClass=ModalEnum.class)
+	@CollectionTable(name="transportadora_modal")
 	@Enumerated(EnumType.STRING)
-	private ModalEnum modal;
+	private List<ModalEnum> modal;
 }
