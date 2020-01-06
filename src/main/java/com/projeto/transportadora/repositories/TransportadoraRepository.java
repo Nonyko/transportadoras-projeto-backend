@@ -8,7 +8,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import com.projeto.transportadora.enums.ModalEnum;
 import com.projeto.transportadora.models.Transportadora;
+import com.projeto.transportadora.repositories.interfaces.ModalCount;
 import com.projeto.transportadora.repositories.interfaces.MunicipioCount;
 import com.projeto.transportadora.repositories.interfaces.UfCount;
 
@@ -22,6 +24,6 @@ public interface TransportadoraRepository extends JpaRepository<Transportadora, 
 	 
 	 @Query("select t.municipio as municipio, count(t.municipio) as municipioCount from Transportadora t group by t.municipio")
 	 List<MunicipioCount> getMunicipiosAndMunicipiosCount();
-	
-	
+	 
+
 }

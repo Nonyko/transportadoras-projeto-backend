@@ -46,6 +46,7 @@ public class TransportadoraService {
 		novaTransportadora.setWhatsapp(criarTransportadoraDTO.getWhatsapp());
 		novaTransportadora.setBairro(criarTransportadoraDTO.getBairro());
 		novaTransportadora.setRua(criarTransportadoraDTO.getRua());
+		novaTransportadora.setCep(criarTransportadoraDTO.getCep());
 		novaTransportadora.setNumero(criarTransportadoraDTO.getNumero());
 		novaTransportadora.setMunicipio(criarTransportadoraDTO.getMunicipio());
 		novaTransportadora.setUf(EstadoEnum.fromSigla(criarTransportadoraDTO.getUf()));		
@@ -78,6 +79,7 @@ public class TransportadoraService {
 			transportadoraEditada.setWhatsapp(criarTransportadoraDTO.getWhatsapp());
 			transportadoraEditada.setBairro(criarTransportadoraDTO.getBairro());
 			transportadoraEditada.setRua(criarTransportadoraDTO.getRua());
+			transportadoraEditada.setCep(criarTransportadoraDTO.getCep());
 			transportadoraEditada.setNumero(criarTransportadoraDTO.getNumero());
 			transportadoraEditada.setMunicipio(criarTransportadoraDTO.getMunicipio());
 			transportadoraEditada.setUf(EstadoEnum.fromSigla(criarTransportadoraDTO.getUf()));

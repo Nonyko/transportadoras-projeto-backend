@@ -61,7 +61,7 @@ public class TransportadoraRepositoryCustomImpl implements TransportadoraReposit
 		if(tipoModalList!=null) {
 			final List<Predicate> orPredicatesModal = new ArrayList();
 			for(ModalEnum modal : tipoModalList){
-				orPredicatesModal.add(criteriaBuilder.equal( transportadora.get("modal"), modal));
+				orPredicatesModal.add(criteriaBuilder.isMember(modal, transportadora.get("modal")));
 			}
 			predicates.add(criteriaBuilder.or(orPredicatesModal.toArray(new Predicate[orPredicatesModal.size()])));
 		}

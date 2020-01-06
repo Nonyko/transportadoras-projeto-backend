@@ -39,4 +39,6 @@ public class CriarTransportadoraDTO {
 	private String uf;
 	@NotNull(message = "Campo uf deve ser preenchido.")
 	private List<ModalEnum> modal;
+	@NotEmpty(message = "Campo cep deve ser preenchido.")
+	private String cep;
 }

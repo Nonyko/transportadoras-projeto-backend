@@ -124,11 +124,15 @@ public class TransportadoraController {
 		Page<Transportadora> transportadoraPage = transportadoraService.listarTransportadoras(pageable, nomeTransportadora, ufList, municipioList, tipoModal);
 		
 		//Coloca total de paginas no header
-		int totalPages = transportadoraPage.getTotalPages();
+		int totalPages = transportadoraPage.getTotalPages();		
+		long totalElements = transportadoraPage.getTotalElements();
 		HttpHeaders responseHeaders = new HttpHeaders();
 		responseHeaders.set("totalPages",
 		Integer.toString(totalPages));
-		
+		responseHeaders.set("totalElements",
+				Long.toString(totalElements));
+		responseHeaders.set("Access-Control-Expose-Headers", "totalPages");
+		responseHeaders.set("Access-Control-Expose-Headers", "totalElements");
 		return ResponseEntity.ok().headers(responseHeaders).body(transportadoraMapper.toDto(transportadoraPage.getContent()));
 	}
 	

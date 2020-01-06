@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.projeto.transportadora.enums.EstadoEnum;
 import com.projeto.transportadora.enums.ModalEnum;
-
 import lombok.Getter;
 import lombok.Setter;
 
@@ -24,4 +23,5 @@ public class TransportadoraDTO {
 	private String municipio;
 	private EstadoEnum uf;
 	private List<ModalEnum> modal;
+	private String cep;
 }

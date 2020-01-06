@@ -11,6 +11,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
@@ -51,9 +53,10 @@ private static final long serialVersionUID = 1L;
 	private String numero;	
 	@Enumerated(EnumType.STRING)
 	private EstadoEnum uf;
+	private String cep;	
 	
-	@ElementCollection(targetClass=ModalEnum.class)
-	@CollectionTable(name="transportadora_modal")
+	@ElementCollection(targetClass=ModalEnum.class)	
+	@JoinTable(name = "transportadora_modal", joinColumns = @JoinColumn(name = "transportadora_id"))
 	@Enumerated(EnumType.STRING)
 	private List<ModalEnum> modal;
 }
